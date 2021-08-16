@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <div>
-      Hello marketplace!
-    </div>
-  );
+  return <div>Ceva modificare idk?!?</div>;
 }
 
 export default App;
