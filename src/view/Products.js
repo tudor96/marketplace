@@ -14,7 +14,7 @@ function Products() {
 			});
 	}, []);
 	return (
-		<Container>
+		<Container style={{ marginTop: "100px" }}>
 			<Grid columns={4}>
 				{products.map((product, index) => {
 					return (

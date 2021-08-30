@@ -2,7 +2,7 @@ import { Card, Image, Icon } from "semantic-ui-react";
 
 function Product({ product }) {
 	return (
-		<Card>
+		<Card style={{ zIndex: 0 }}>
 			<div style={{ maxHeight: "250px" }}>
 				<Image
 					src={product.image}
