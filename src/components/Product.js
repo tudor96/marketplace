@@ -1,8 +1,15 @@
 import { Card, Image, Icon } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 function Product({ product }) {
+	const history = useHistory();
+
+	const handleRedirect = () => {
+		history.push("/product-detail/" + product.id);
+	};
+
 	return (
-		<Card style={{ zIndex: 0 }}>
+		<Card style={{ zIndex: 0 }} onClick={handleRedirect}>
 			<div style={{ maxHeight: "250px" }}>
 				<Image
 					src={product.image}

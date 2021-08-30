@@ -1,29 +1,44 @@
 import { useEffect, useState } from "react";
 import { Container, Grid } from "semantic-ui-react";
 import Product from "../components/Product";
+import ReactLoading from "react-loading";
+import { ContainerLoading } from "../components/Products.style";
 
 function Products() {
 	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		setLoading(true);
 		fetch("https://fakestoreapi.com/products")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				setProducts(data);
+				setLoading(false);
 			});
 	}, []);
 	return (
 		<Container style={{ marginTop: "100px" }}>
-			<Grid columns={4}>
-				{products.map((product, index) => {
-					return (
-						<Grid.Column key={index}>
-							<Product product={product} />
-						</Grid.Column>
-					);
-				})}
-			</Grid>
+			{loading ? (
+				<ContainerLoading>
+					<ReactLoading
+						type='spinningBubbles'
+						color='black'
+						height={100}
+						width={100}
+					/>
+				</ContainerLoading>
+			) : (
+				<Grid columns={4}>
+					{products.map((product, index) => {
+						return (
+							<Grid.Column key={index}>
+								<Product product={product} />
+							</Grid.Column>
+						);
+					})}
+				</Grid>
+			)}
 		</Container>
 	);
 }

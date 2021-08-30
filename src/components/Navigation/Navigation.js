@@ -10,6 +10,10 @@ function Navigation() {
 	const location = useLocation();
 
 	const getPageName = (pageLocation) => {
+		if (pageLocation.includes("/product-detail")) {
+			return "Pagina detalii produs";
+		}
+
 		switch (pageLocation) {
 			case "/":
 				return "Pagina Home";
