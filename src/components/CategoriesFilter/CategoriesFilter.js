@@ -1,6 +1,6 @@
 import { Card, Checkbox, Divider } from "semantic-ui-react";
 
-function CategoriesFilters({ categories }) {
+function CategoriesFilters({ categories, handleCheckedCategory }) {
 	return (
 		<Card
 			color='blue'
@@ -17,7 +17,13 @@ function CategoriesFilters({ categories }) {
 				{categories.map((category, index) => {
 					return (
 						<div key={index}>
-							<Checkbox label={category.name} />
+							<Checkbox
+								label={category.name}
+								checked={category.checked}
+								onClick={() => {
+									handleCheckedCategory(category);
+								}}
+							/>
 							<Divider hidden />
 						</div>
 					);
